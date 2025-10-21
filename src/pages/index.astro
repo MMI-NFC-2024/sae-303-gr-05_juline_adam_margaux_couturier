@@ -39,7 +39,7 @@ import * as Plot from "@observablehq/plot";
     class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto px-6 mb-12"
   >
     <div
-      class="bg-white border border-slate-200 rounded-xl p-6 hover:bg-purple-50 transition cursor-pointer"
+      class="bg-white border border-slate-200 rounded-xl p-6 hover:bg-purple-50 transition cursor-pointer hover:shadow-lg"
     >
       <p class="text-sm text-slate-500 uppercase mb-1">Accréditation</p>
       <div class="text-3xl font-bold text-purple-800 my-2">10 500+</div>
@@ -49,7 +49,7 @@ import * as Plot from "@observablehq/plot";
     </div>
 
     <div
-      class="bg-white border border-slate-200 rounded-xl p-6 hover:bg-purple-50 transition cursor-pointer"
+      class="bg-white border border-slate-200 rounded-xl p-6 hover:bg-purple-50 transition cursor-pointer hover:shadow-lg"
     >
       <p class="text-sm text-slate-500 uppercase mb-1">Répartition</p>
       <div class="text-3xl font-bold text-purple-800 my-2">x90</div>
@@ -59,7 +59,7 @@ import * as Plot from "@observablehq/plot";
     </div>
 
     <div
-      class="bg-white border border-slate-200 rounded-xl p-6 hover:bg-purple-50 transition cursor-pointer"
+      class="bg-white border border-slate-200 rounded-xl p-6 hover:bg-purple-50 transition cursor-pointe hover:shadow-lg"
     >
       <p class="text-sm text-slate-500 uppercase mb-1">Mortalité chronique</p>
       <div class="text-3xl font-bold text-purple-800 my-2">305 000</div>
@@ -70,24 +70,26 @@ import * as Plot from "@observablehq/plot";
   </div>
 
   <div class="max-w-7xl mx-auto px-6 py-12">
-    <h3 class="text-2xl font-semibold mb-8">Nos analyses récentes</h3>
+    <h3 class="text-2xl font-semibold mb-8">Données & Visualisations</h3>
 
     <article
-      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white border border-slate-200 rounded-2xl p-6 mb-6"
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-[#e6eafd] border border-slate-200 rounded-2xl p-6 mb-6"
     >
       <div>
         <h4 class="text-lg font-semibold mb-3">
-          Accréditations : montée en charge
+          Corps médical : progression inégale
         </h4>
-        <p class="text-base leading-relaxed text-slate-600 mb-4">
-          Croissance rapide depuis 2021, mais forte concentration
-          métropolitaine. Les départements ruraux restent peu dotés.
+        <p class="text-base leading-relaxed text-slate-700 mb-4">
+          Découvrez l'essor spectaculaire de l'accréditation médicale en France.
+          D'un démarrage timide en 2020 à un pic de 2 734 accréditations en
+          2024, ce programme volontaire séduit désormais plus de 10 500 médecins
+          dans les spécialités à risque.
         </p>
         <a
           href="/accreditation"
           class="text-purple-700 font-medium hover:text-purple-900"
         >
-          Lire plus →
+          En savoir plus →
         </a>
       </div>
       <div>
@@ -100,26 +102,28 @@ import * as Plot from "@observablehq/plot";
     </article>
 
     <article
-      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white border border-slate-200 rounded-2xl p-6 mb-6"
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-[#e6eafd] border border-slate-200 rounded-2xl p-6 mb-6"
     >
       <div>
         <h4 class="text-lg font-semibold mb-3">
-          Mortalité : hiérarchie des causes
+          Répartition territoriale : fracture métropoles-rural
         </h4>
-        <p class="text-base leading-relaxed text-slate-600 mb-4">
-          Tumeurs et maladies cardio-vasculaires dominent; la rupture 2020-21
-          par COVID-19 est visible mais ponctuelle.
+        <p class="text-base leading-relaxed text-slate-700 mb-4">
+          Explorez la répartition des médecins accrédités par département de
+          2018 à 2025. Les métropoles (Paris, Lyon, Marseille) concentrent la
+          majorité des médecins, tandis que les territoires ruraux restent
+          sous-dotés, révélant de fortes inégalités territoriales.
         </p>
         <a
           href="/mortalite"
           class="text-purple-700 font-medium hover:text-purple-900"
         >
-          Lire plus →
+          En savoir plus →
         </a>
       </div>
       <div>
         <img
-          src="/images/thumb-mortalite.png"
+          src="/src/img/accueil.jpg"
           alt=""
           class="w-full h-auto rounded-lg"
         />
@@ -127,21 +131,111 @@ import * as Plot from "@observablehq/plot";
     </article>
 
     <article
-      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white border border-slate-200 rounded-2xl p-6 mb-6"
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-[#e6eafd] border border-slate-200 rounded-2xl p-6 mb-6"
     >
       <div>
         <h4 class="text-lg font-semibold mb-3">
-          Prévention : vaccination chronique
+          Causes de décès : priorités de santé publique
         </h4>
-        <p class="text-base leading-relaxed text-slate-600 mb-4">
-          Couverture élevée au national mais hétérogène. Focus sur pathologies
-          cardio-métaboliques.
+        <p class="text-base leading-relaxed text-slate-700 mb-4">
+          Comparez en un coup d'œil 18 causes de décès sur 5 ans. Cette carte de
+          chaleur révèle la domination des tumeurs et maladies
+          cardiovasculaires, et l'impact brutal de la COVID-19 en 2020-2021 qui
+          devient la 3ème cause de mortalité.
         </p>
         <a
           href="/vaccination"
           class="text-purple-700 font-medium hover:text-purple-900"
         >
-          Lire plus →
+          En savoir plus →
+        </a>
+      </div>
+      <div>
+        <img
+          src="/images/thumb-vaccination.png"
+          alt=""
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
+    </article>
+
+    <article
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-[#e6eafd] border border-slate-200 rounded-2xl p-6 mb-6"
+    >
+      <div>
+        <h4 class="text-lg font-semibold mb-3">
+          Mortalité : domination cancer-cardiovasculaire
+        </h4>
+        <p class="text-base leading-relaxed text-slate-700 mb-4">
+          Découvrez le classement des 10 principales causes de mortalité en
+          France. Les tumeurs dominent largement avec 165 000 décès/an, suivies
+          des maladies cardiovasculaires (140 000). La COVID-19 s'insère dans ce
+          palmarès avec 28 000 décès annuels moyens.
+        </p>
+        <a
+          href="/vaccination"
+          class="text-purple-700 font-medium hover:text-purple-900"
+        >
+          En savoir plus →
+        </a>
+      </div>
+      <div>
+        <img
+          src="/images/thumb-vaccination.png"
+          alt=""
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
+    </article>
+
+    <article
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-[#e6eafd] border border-slate-200 rounded-2xl p-6 mb-6"
+    >
+      <div>
+        <h4 class="text-lg font-semibold mb-3">
+          Vaccination : inégalités territoriales persistantes
+        </h4>
+        <p class="text-base leading-relaxed text-slate-700 mb-4">
+          Qui sont les patients prioritaires pour la vaccination ? Les
+          traitements antihypertenseurs dominent largement, suivis des
+          hypolipémiants et troubles neurologiques. Cette répartition illustre
+          la priorisation basée sur les pathologies cardiovasculaires et
+          métaboliques.
+        </p>
+        <a
+          href="/vaccination"
+          class="text-purple-700 font-medium hover:text-purple-900"
+        >
+          En savoir plus →
+        </a>
+      </div>
+      <div>
+        <img
+          src="/images/thumb-vaccination.png"
+          alt=""
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
+    </article>
+
+    <article
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-[#e6eafd] border border-slate-200 rounded-2xl p-6 mb-6"
+    >
+      <div>
+        <h4 class="text-lg font-semibold mb-3">
+          Couverture vaccinale : homogénéité territoriale
+        </h4>
+        <p class="text-base leading-relaxed text-slate-700 mb-4">
+          Une réussite de santé publique : plus de 85% des patients chroniques
+          sont vaccinés dans la quasi-totalité des départements. Cette carte
+          démontre que le suivi médical des personnes fragiles garantit un accès
+          équitable à la vaccination préventive.
+        </p>
+        <a
+          href="/vaccination"
+          class="text-purple-700 font-medium hover:text-purple-900"
+        >
+          En savoir plus →
         </a>
       </div>
       <div>
