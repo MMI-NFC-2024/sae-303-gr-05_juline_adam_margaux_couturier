@@ -2,20 +2,165 @@
 import PlotFigure from "../components/PlotFigure.astro";
 import Layout from "../layouts/Layout.astro";
 import * as Plot from "@observablehq/plot";
-import penguins from "../assets/penguins.json";
 ---
 
-<Layout>
-  <h1 class="text-2xl">Test Astro et Plot (Observablehq)</h1>
-  <PlotFigure
-    options={{
-      marks: [
-        Plot.dot(penguins, {
-          x: "culmen_length_mm",
-          y: "culmen_depth_mm",
-          stroke: "species",
-        }),
-      ],
-    }}
-  />
+<Layout title="Santé et territoire">
+  <div
+    class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto px-6 py-12 items-center"
+  >
+    <div>
+      <h1 class="text-4xl lg:text-5xl font-extrabold text-purple-900 mb-4">
+        Santé et territoire
+      </h1>
+      <p class="text-lg leading-relaxed text-slate-600 mb-6">
+        Comment les disparités territoriales dans l'offre de soins et la
+        prévention influencent-elles les inégalités de santé en France
+        métropolitaine ?
+      </p>
+      <a
+        href="#facts"
+        id="scrollBtn"
+        class="inline-block px-6 py-3.5 bg-purple-700 text-white rounded-lg font-semibold hover:bg-purple-800 transition cursor-pointer"
+      >
+        Découvrir notre analyse
+      </a>
+    </div>
+    <div>
+      <img
+        src="/src/img/accueil.jpg"
+        alt="Illustration"
+        class="w-full h-auto"
+      />
+    </div>
+  </div>
+
+  <div
+    id="facts"
+    class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto px-6 mb-12"
+  >
+    <div
+      class="bg-white border border-slate-200 rounded-xl p-6 hover:bg-purple-50 transition cursor-pointer"
+    >
+      <p class="text-sm text-slate-500 uppercase mb-1">Accréditation</p>
+      <div class="text-3xl font-bold text-purple-800 my-2">10 500+</div>
+      <p class="text-sm text-slate-600">
+        Médecins accrédités cumulés (2018-2025)
+      </p>
+    </div>
+
+    <div
+      class="bg-white border border-slate-200 rounded-xl p-6 hover:bg-purple-50 transition cursor-pointer"
+    >
+      <p class="text-sm text-slate-500 uppercase mb-1">Répartition</p>
+      <div class="text-3xl font-bold text-purple-800 my-2">x90</div>
+      <p class="text-sm text-slate-600">
+        Écart entre Paris et les départements ruraux
+      </p>
+    </div>
+
+    <div
+      class="bg-white border border-slate-200 rounded-xl p-6 hover:bg-purple-50 transition cursor-pointer"
+    >
+      <p class="text-sm text-slate-500 uppercase mb-1">Mortalité chronique</p>
+      <div class="text-3xl font-bold text-purple-800 my-2">305 000</div>
+      <p class="text-sm text-slate-600">
+        Décès / an par tumeurs et maladies cardiovasculaires
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <h3 class="text-2xl font-semibold mb-8">Nos analyses récentes</h3>
+
+    <article
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white border border-slate-200 rounded-2xl p-6 mb-6"
+    >
+      <div>
+        <h4 class="text-lg font-semibold mb-3">
+          Accréditations : montée en charge
+        </h4>
+        <p class="text-base leading-relaxed text-slate-600 mb-4">
+          Croissance rapide depuis 2021, mais forte concentration
+          métropolitaine. Les départements ruraux restent peu dotés.
+        </p>
+        <a
+          href="/accreditation"
+          class="text-purple-700 font-medium hover:text-purple-900"
+        >
+          Lire plus →
+        </a>
+      </div>
+      <div>
+        <img
+          src="/images/thumb-accreditation.png"
+          alt=""
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
+    </article>
+
+    <article
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white border border-slate-200 rounded-2xl p-6 mb-6"
+    >
+      <div>
+        <h4 class="text-lg font-semibold mb-3">
+          Mortalité : hiérarchie des causes
+        </h4>
+        <p class="text-base leading-relaxed text-slate-600 mb-4">
+          Tumeurs et maladies cardio-vasculaires dominent; la rupture 2020-21
+          par COVID-19 est visible mais ponctuelle.
+        </p>
+        <a
+          href="/mortalite"
+          class="text-purple-700 font-medium hover:text-purple-900"
+        >
+          Lire plus →
+        </a>
+      </div>
+      <div>
+        <img
+          src="/images/thumb-mortalite.png"
+          alt=""
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
+    </article>
+
+    <article
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white border border-slate-200 rounded-2xl p-6 mb-6"
+    >
+      <div>
+        <h4 class="text-lg font-semibold mb-3">
+          Prévention : vaccination chronique
+        </h4>
+        <p class="text-base leading-relaxed text-slate-600 mb-4">
+          Couverture élevée au national mais hétérogène. Focus sur pathologies
+          cardio-métaboliques.
+        </p>
+        <a
+          href="/vaccination"
+          class="text-purple-700 font-medium hover:text-purple-900"
+        >
+          Lire plus →
+        </a>
+      </div>
+      <div>
+        <img
+          src="/images/thumb-vaccination.png"
+          alt=""
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
+    </article>
+  </div>
 </Layout>
+
+<script>
+  document.getElementById("scrollBtn")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.getElementById("facts")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+</script>
