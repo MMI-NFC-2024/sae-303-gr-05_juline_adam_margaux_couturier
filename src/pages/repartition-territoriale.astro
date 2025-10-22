@@ -1,13 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import medecinsData from "../assets/medecins_par_departement.json";
+import medecinsEvolution from "../assets/medecins_evolution_annuelle.json";
+import medecinsDept from "../assets/medecins_par_departement.json";
 import departements from "../assets/departements.geojson.json";
+
+const listeAnnees = [
+    "Toutes (2018-2025)",
+    ...medecinsEvolution.map((d) => d.annee.toString()),
+];
 ---
 
 <Layout title="Répartition territoriale : fracture métropoles-rural">
     <div class="max-w-7xl mx-auto px-6 py-12">
         <h1 class="text-4xl lg:text-5xl font-extrabold text-purple-900 mb-6">
-            Nombre cumulé de médecins accrédités par département en France
+            Nombre de médecins accrédités par département en France
             Métropolitaine
         </h1>
 
@@ -20,6 +26,26 @@ import departements from "../assets/departements.geojson.json";
             Cette carte révèle une forte concentration des médecins accrédités
             dans les grandes métropoles françaises.
         </p>
+    </div>
+
+    <div class="flex justify-center px-6 mb-6">
+        <div class="flex gap-4 items-center">
+            <label for="annee" class="font-semibold text-slate-700"
+                >Année :</label
+            >
+            <select
+                id="annee"
+                class="border border-slate-300 rounded-lg px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-purple-600"
+            >
+                {
+                    listeAnnees.map((a, i) => (
+                        <option value={a} selected={i === 0}>
+                            {a}
+                        </option>
+                    ))
+                }
+            </select>
+        </div>
     </div>
 
     <div class="flex justify-center px-6 mb-12">
@@ -136,6 +162,7 @@ import departements from "../assets/departements.geojson.json";
                 </div>
             </div>
         </div>
+
         <div>
             <h3 class="text-2xl font-semibold text-purple-900 mb-4 mt-20">
                 Témoignage d'une résidente de Haute Marne
@@ -145,47 +172,75 @@ import departements from "../assets/departements.geojson.json";
                     <h4 class="text-lg font-semibold text-slate-700 mb-4">
                         Solène Geiss, 20 ans, étudiante en BUT MMI
                     </h4>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-700"
-                                >« Les temps sont difficiles avec les médcins, 6
-                                mois pour un rendez-vous...tous les ans le
-                                cabinet change de docteur, on ne sait jamais si
-                                le prochain restera ! Pour avoir un rendez-vous
-                                avant il faut faire 1/2h de route et pour les
-                                spécialistes c'est encore pire ! Le plus proche
-                                reste Dijon ou Nancy. »</span
-                            >
-                        </div>
-                    </div>
+                    <p class="text-slate-700 italic">
+                        « Les temps sont difficiles avec les médecins, 6 mois
+                        pour un rendez-vous... tous les ans le cabinet change de
+                        docteur, on ne sait jamais si le prochain restera ! Pour
+                        avoir un rendez-vous avant il faut faire 1/2h de route
+                        et pour les spécialistes c'est encore pire ! Le plus
+                        proche reste Dijon ou Nancy. »
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</Layout>
 
-    <script>
-        import * as Plot from "@observablehq/plot";
-        import medecinsData from "../assets/medecins_par_departement.json";
-        import departements from "../assets/departements.geojson.json";
+<script>
+    import * as Plot from "@observablehq/plot";
+    import medecinsEvolution from "../assets/medecins_evolution_annuelle.json";
+    import medecinsDept from "../assets/medecins_par_departement.json";
+    import departements from "../assets/departements.geojson.json";
 
-        const container = document.getElementById("plot-container");
+    const elmAnnee = document.getElementById("annee") as HTMLSelectElement;
+    const container = document.getElementById("plot-container");
 
-        const medecinsMap = new Map(
-            medecinsData.map((d) => [d.Département, d.nombre_medecins]),
-        );
+    function getMedecinsByDept(anneeSelectionnee: string) {
+        if (anneeSelectionnee === "Toutes (2018-2025)") {
+            return new Map(
+                medecinsDept.map((d) => [d.Département, d.nombre_medecins]),
+            );
+        } else {
+            const anneeData = medecinsEvolution.find(
+                (d) => d.annee === Number(anneeSelectionnee),
+            );
+            const totalCumul =
+                medecinsEvolution[medecinsEvolution.length - 1].cumul;
+            const ratio = anneeData.nombre_accreditations / totalCumul;
+
+            return new Map(
+                medecinsDept.map((d) => [
+                    d.Département,
+                    Math.round(d.nombre_medecins * ratio),
+                ]),
+            );
+        }
+    }
+
+    function updateMap() {
+        const anneeValue = elmAnnee.value;
+        const medecinsByDept = getMedecinsByDept(anneeValue);
 
         const optionPlot = {
-            title: "Nombre cumulé de médecins accrédités par département (2018-2025)",
+            title: "Nombre cumulé de médecins accrédités par département en France Métropolitaine",
+            subtitle: "(de 2018 à 2025)",
             projection: {
                 type: "mercator",
                 domain: departements,
             },
             color: {
                 type: "threshold",
-                domain: [0, 50, 100, 200, 300, 500],
+                domain:
+                    anneeValue === "Toutes (2018-2025)"
+                        ? [0, 50, 100, 200, 300, 500]
+                        : [0, 10, 25, 50, 100, 200],
                 scheme: "YlOrRd",
-                label: "Nombre de médecins accrédités",
                 legend: true,
+                label: `Nombre de médecins accrédités ${
+                    anneeValue === "Toutes (2018-2025)"
+                        ? "(cumul 2018-2025)"
+                        : `en ${anneeValue}`
+                }`,
                 tickFormat: (d) => (d === 0 ? "0" : d),
             },
             marks: [
@@ -195,33 +250,47 @@ import departements from "../assets/departements.geojson.json";
                             d.properties.code ||
                             d.properties.CODE_DEPT ||
                             d.properties.insee;
-                        return medecinsMap.get(code) || 0;
+                        return medecinsByDept.get(code) || 0;
                     },
                     stroke: "white",
                     strokeWidth: 0.5,
-                    tip: {
-                        format: {
-                            fill: false,
-                            stroke: false,
+                    channels: {
+                        Département: (d) => {
+                            const code =
+                                d.properties.code ||
+                                d.properties.CODE_DEPT ||
+                                d.properties.insee;
+                            return (
+                                d.properties.nom ||
+                                d.properties.NOM_DEPT ||
+                                code
+                            );
                         },
-                    },
-                    title: (d) => {
-                        const code =
+                        Code: (d) =>
                             d.properties.code ||
                             d.properties.CODE_DEPT ||
-                            d.properties.insee;
-                        const nom =
-                            d.properties.nom || d.properties.NOM_DEPT || code;
-                        const medecins = medecinsMap.get(code) || 0;
-                        return `${nom} (${code}): ${medecins} médecins`;
+                            d.properties.insee,
+                        Médecins: (d) => {
+                            const code =
+                                d.properties.code ||
+                                d.properties.CODE_DEPT ||
+                                d.properties.insee;
+                            return medecinsByDept.get(code) || 0;
+                        },
                     },
+                    tip: true,
                 }),
             ],
         };
 
         if (container) {
+            container.innerHTML = "";
             const plot = Plot.plot(optionPlot);
             container.appendChild(plot);
         }
-    </script>
-</Layout>
+    }
+
+    updateMap();
+
+    elmAnnee.addEventListener("change", updateMap);
+</script>
