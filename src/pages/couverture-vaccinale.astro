@@ -1,0 +1,256 @@
+---
+import Layout from "../layouts/Layout.astro";
+import vaccinationData from "../assets/Vaccination_pathologie_cleaned.json";
+import departements from "../assets/departements.geojson.json";
+
+const dataDept = vaccinationData.filter(
+    (d) =>
+        d.pathologie === "Toutes pathologies de la categorie" &&
+        d.departement_residence !== "Tout departement",
+);
+
+const tauxByDept = new Map();
+dataDept.forEach((d) => {
+    const taux = parseFloat(d.taux_termine_pathologie);
+    if (!isNaN(taux)) {
+        tauxByDept.set(d.departement_residence, taux);
+    }
+});
+
+const tauxValues = Array.from(tauxByDept.values());
+const tauxMoyen = tauxValues.reduce((sum, t) => sum + t, 0) / tauxValues.length;
+const tauxMax = Math.max(...tauxValues);
+const tauxMin = Math.min(...tauxValues);
+---
+
+<Layout title="Vaccination : une couverture homogène">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <h1 class="text-4xl lg:text-5xl font-extrabold text-purple-900 mb-6">
+            Taux de vaccination par département en France
+        </h1>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-4">
+            La carte illustre la couverture vaccinale globale chez les personnes
+            atteintes de maladies chroniques au 1er janvier 2023.
+        </p>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-8">
+            Les taux élevés (85-94%, en vert) dans la majorité des départements
+            témoignent d'une bonne adhésion aux recommandations vaccinales pour
+            les publics fragiles.
+        </p>
+    </div>
+
+    <div class="flex justify-center px-6 mb-12">
+        <div
+            id="plot-container"
+            class="bg-white rounded-2xl border border-slate-200 p-6 inline-block"
+        >
+        </div>
+    </div>
+
+    <div class="text-center mx-auto px-6 mb-12">
+        <a
+            href="https://www.data.gouv.fr/datasets/donnees-vaccination-par-pathologie-et-departement-region/"
+            class="text-sm text-blue-600 hover:text-blue-800 underline"
+            target="_blank"
+        >
+            Source : Données vaccination par pathologie et département / région
+        </a>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Taux élevés généralisés
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Les zones vert foncé (nord, ouest) dépassent 90%, tandis
+                        que les zones gris clair correspondent aux données
+                        manquantes ou taux plus faibles. La plupart des
+                        départements affichent des taux supérieurs à 88%.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Homogénéité territoriale remarquable
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Cette homogénéité territoriale est remarquable et montre
+                        que les patients chroniques suivis médicalement ont un
+                        bon accès à la vaccination préventive, indépendamment de
+                        leur localisation géographique.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Un dispositif équitable
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Contrairement à d'autres indicateurs de santé qui
+                        révèlent des fractures territoriales, la vaccination des
+                        personnes à risque bénéficie d'une couverture
+                        relativement équilibrée sur l'ensemble du territoire.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-8">
+                <h3 class="text-2xl font-semibold text-purple-900 mb-6">
+                    Statistiques nationales
+                </h3>
+
+                <div class="space-y-5">
+                    <div class="border-b border-slate-200 pb-4">
+                        <div class="text-sm text-slate-600 mb-1">
+                            Taux moyen national
+                        </div>
+                        <div class="text-3xl font-bold text-purple-900">
+                            {(tauxMoyen * 100).toFixed(1)}%
+                        </div>
+                    </div>
+
+                    <div class="border-b border-slate-200 pb-4">
+                        <div class="text-sm text-slate-600 mb-1">
+                            Taux maximum
+                        </div>
+                        <div class="text-2xl font-bold text-green-700">
+                            {(tauxMax * 100).toFixed(1)}%
+                        </div>
+                    </div>
+
+                    <div class="pb-4">
+                        <div class="text-sm text-slate-600 mb-1">
+                            Taux minimum
+                        </div>
+                        <div class="text-2xl font-bold text-orange-600">
+                            {(tauxMin * 100).toFixed(1)}%
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-4 bg-purple-50 rounded-lg">
+                    <h4 class="font-semibold text-purple-900 mb-2">À noter</h4>
+                    <p class="text-sm text-slate-700">
+                        Les données concernent uniquement les personnes
+                        atteintes de pathologies chroniques suivies
+                        médicalement, ce qui explique les taux de vaccination
+                        particulièrement élevés.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    import * as Plot from "@observablehq/plot";
+    import vaccinationData from "../assets/Vaccination_pathologie_cleaned.json";
+    import departements from "../assets/departements.geojson.json";
+
+    const container = document.getElementById("plot-container");
+
+    // Filtrer les données pour "Toutes pathologies" par département
+    const dataDept = vaccinationData.filter(
+        (d) =>
+            d.pathologie === "Toutes pathologies de la categorie" &&
+            d.departement_residence !== "Tout departement",
+    );
+
+    // Créer une map des taux par département
+    const tauxByDept = new Map(
+        dataDept.map((d) => [
+            d.departement_residence,
+            parseFloat(d.taux_termine_pathologie),
+        ]),
+    );
+
+    const optionPlot = {
+        title: "Taux de vaccination toute pathologie confondue, par département",
+        subtitle: "(au 1er Janvier 2023)",
+        projection: {
+            type: "mercator",
+            domain: departements,
+        },
+        color: {
+            type: "threshold",
+            domain: [0.8, 0.85, 0.88, 0.9, 0.92, 0.94],
+            scheme: "BuGn",
+            legend: true,
+            label: "Taux de vaccination complète (toutes pathologies)",
+        },
+        marks: [
+            Plot.geo(departements, {
+                fill: "#e0e0e0",
+                stroke: "white",
+                strokeWidth: 0.5,
+            }),
+            Plot.geo(departements, {
+                fill: (d) => {
+                    const code =
+                        d.properties.code ||
+                        d.properties.CODE_DEPT ||
+                        d.properties.insee;
+                    const taux = tauxByDept.get(code);
+                    return taux || null;
+                },
+                stroke: "white",
+                strokeWidth: 0.5,
+                channels: {
+                    Département: (d) =>
+                        d.properties.nom ||
+                        d.properties.NOM_DEPT ||
+                        d.properties.code,
+                    "Taux de vaccination": (d) => {
+                        const code =
+                            d.properties.code ||
+                            d.properties.CODE_DEPT ||
+                            d.properties.insee;
+                        const taux = tauxByDept.get(code);
+                        return taux
+                            ? `${(taux * 100).toFixed(1)}%`
+                            : "Données non disponibles";
+                    },
+                    "Patients vaccinés": (d) => {
+                        const code =
+                            d.properties.code ||
+                            d.properties.CODE_DEPT ||
+                            d.properties.insee;
+                        const deptData = dataDept.find(
+                            (x) => x.departement_residence === code,
+                        );
+                        return deptData
+                            ? parseFloat(
+                                  deptData.effectif_termine_pathologie,
+                              ).toLocaleString()
+                            : "N/A";
+                    },
+                    "Total patients": (d) => {
+                        const code =
+                            d.properties.code ||
+                            d.properties.CODE_DEPT ||
+                            d.properties.insee;
+                        const deptData = dataDept.find(
+                            (x) => x.departement_residence === code,
+                        );
+                        return deptData
+                            ? parseFloat(
+                                  deptData.population_patho_cartographie,
+                              ).toLocaleString()
+                            : "N/A";
+                    },
+                },
+                tip: true,
+            }),
+        ],
+    };
+
+    if (container) {
+        const plot = Plot.plot(optionPlot);
+        container.appendChild(plot);
+    }
+</script>
