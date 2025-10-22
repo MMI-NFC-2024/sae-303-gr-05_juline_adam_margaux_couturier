@@ -1,0 +1,352 @@
+---
+import Layout from "../layouts/Layout.astro";
+import vaccinationData from "../assets/Vaccination_pathologie_cleaned.json";
+
+const dataFrance = vaccinationData.filter(
+    (d) =>
+        d.libelle_departement === "FRANCE" &&
+        !d.pathologie.includes("Toutes pathologies") &&
+        !d.pathologie.includes("Au moins une pathologie"),
+);
+
+const pathologieMap = new Map();
+
+dataFrance.forEach((d) => {
+    const patho = d.pathologie;
+    const pop = parseFloat(d.population_patho_cartographie) || 0;
+    const taux = parseFloat(d.taux_termine_pathologie) || 0;
+
+    if (pathologieMap.has(patho)) {
+        const existing = pathologieMap.get(patho);
+        existing.population += pop;
+        existing.tauxSum += taux;
+        existing.count += 1;
+    } else {
+        pathologieMap.set(patho, {
+            pathologie: patho,
+            population: pop,
+            tauxSum: taux,
+            count: 1,
+        });
+    }
+});
+
+const pathologiesList = Array.from(pathologieMap.values()).map((p) => ({
+    pathologie: p.pathologie,
+    population_patho_cartographie: p.population,
+    taux_termine_pathologie: p.tauxSum / p.count,
+}));
+
+const pathologiesTop = pathologiesList
+    .sort(
+        (a, b) =>
+            b.population_patho_cartographie - a.population_patho_cartographie,
+    )
+    .slice(0, 10);
+---
+
+<Layout title="Vaccination par pathologie : répartition des patients">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <h1 class="text-4xl lg:text-5xl font-extrabold text-purple-900 mb-6">
+            Répartition des patients vaccinés par pathologie chronique
+        </h1>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-4">
+            Ce graphique présente la répartition des patients vaccinés selon
+            leurs pathologies chroniques en France au 1er janvier 2023.
+        </p>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-8">
+            Les traitements antihypertenseurs dominent largement, représentant
+            la première pathologie chronique concernée par la vaccination
+            prioritaire. Cela reflète la forte prévalence de l'hypertension
+            artérielle chez les personnes à risque.
+        </p>
+    </div>
+
+    <div class="flex justify-center px-6 mb-12">
+        <div
+            id="plot-container"
+            class="bg-white rounded-2xl border border-slate-200 p-6 inline-block"
+        >
+        </div>
+    </div>
+
+    <div class="text-center mx-auto px-6 mb-12">
+        <a
+            href="https://www.data.gouv.fr/datasets/donnees-vaccination-par-pathologie-et-departement-region/"
+            class="text-sm text-blue-600 hover:text-blue-800 underline"
+            target="_blank"
+        >
+            Source : Données vaccination par pathologie et département / région
+        </a>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Pathologies cardiovasculaires dominantes
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Les traitements hypolipémiants et les troubles
+                        neurologiques/troubles de l'humeur occupent également
+                        des parts significatives, suivis par le diabète, le
+                        tabagisme et les maladies cardiaques.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Priorisation vaccinale
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Cette distribution illustre la priorisation vaccinale
+                        basée sur les comorbidités : les pathologies
+                        cardiovasculaires et métaboliques représentent
+                        collectivement la majorité des patients vaccinés.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Vue d'ensemble
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Le graphique révèle l'ampleur de la vaccination des
+                        personnes à risque, avec plus de 74 millions de patients
+                        concernés par au moins une des 10 principales
+                        pathologies chroniques identifiées.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-8">
+                <h3 class="text-2xl font-semibold text-purple-900 mb-6">
+                    Top 10 des pathologies
+                </h3>
+
+                <div class="space-y-4">
+                    {
+                        pathologiesTop.map((p, i) => (
+                            <div
+                                class={`flex justify-between items-start pb-3 ${i < 9 ? "border-b border-slate-200" : ""}`}
+                            >
+                                <span class="text-slate-700 font-medium text-sm pr-4">
+                                    {p.pathologie}
+                                </span>
+                                <span
+                                    class={`font-bold whitespace-nowrap ${i === 0 ? "text-purple-900 text-lg" : "text-purple-800"}`}
+                                >
+                                    {(
+                                        p.population_patho_cartographie /
+                                        1000000
+                                    ).toFixed(1)}
+                                    M
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <div class="mt-6 pt-6 border-t-2 border-purple-300">
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-900 font-bold"
+                            >Total cumulé</span
+                        >
+                        <span class="text-purple-900 font-bold text-2xl">
+                            {
+                                (
+                                    pathologiesTop.reduce(
+                                        (sum, p) =>
+                                            sum +
+                                            p.population_patho_cartographie,
+                                        0,
+                                    ) / 1000000
+                                ).toFixed(0)
+                            }M+
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    import * as d3 from "d3";
+    import vaccinationData from "../assets/Vaccination_pathologie_cleaned.json";
+
+    const container = document.getElementById("plot-container");
+
+    if (container) {
+        const dataFrance = vaccinationData.filter(
+            (d) =>
+                d.libelle_departement === "FRANCE" &&
+                !d.pathologie.includes("Toutes pathologies") &&
+                !d.pathologie.includes("Au moins une pathologie"),
+        );
+
+        const pathologieMap = new Map();
+
+        dataFrance.forEach((d) => {
+            const patho = d.pathologie;
+            const pop = parseFloat(d.population_patho_cartographie) || 0;
+            const taux = parseFloat(d.taux_termine_pathologie) || 0;
+
+            if (pathologieMap.has(patho)) {
+                const existing = pathologieMap.get(patho);
+                existing.population += pop;
+                existing.tauxSum += taux;
+                existing.count += 1;
+            } else {
+                pathologieMap.set(patho, {
+                    pathologie: patho,
+                    population: pop,
+                    tauxSum: taux,
+                    count: 1,
+                });
+            }
+        });
+
+        const pathologiesList = Array.from(pathologieMap.values()).map((p) => ({
+            pathologie: p.pathologie,
+            population_patho_cartographie: p.population,
+            taux_termine_pathologie: p.tauxSum / p.count,
+        }));
+
+        const pathologiesTop = pathologiesList
+            .sort(
+                (a, b) =>
+                    b.population_patho_cartographie -
+                    a.population_patho_cartographie,
+            )
+            .slice(0, 10);
+
+        const width = 1100;
+        const height = 700;
+        const radius = Math.min(400, height - 100) / 2;
+
+        const pie = d3
+            .pie()
+            .value((d) => d.population_patho_cartographie)
+            .sort(null);
+
+        const arc = d3.arc().innerRadius(0).outerRadius(radius);
+
+        const color = d3.scaleOrdinal(d3.schemeTableau10);
+
+        const svg = d3
+            .create("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("viewBox", [0, 0, width, height])
+            .style("max-width", "100%")
+            .style("height", "auto");
+
+        const chartGroup = svg
+            .append("g")
+            .attr("transform", `translate(280, ${(height + 60) / 2})`);
+
+        const tooltip = d3
+            .select("body")
+            .append("div")
+            .style("position", "absolute")
+            .style("background", "rgba(0, 0, 0, 0.8)")
+            .style("color", "white")
+            .style("padding", "10px")
+            .style("border-radius", "5px")
+            .style("pointer-events", "none")
+            .style("opacity", 0)
+            .style("font-size", "12px")
+            .style("z-index", "1000");
+
+        chartGroup
+            .selectAll("path")
+            .data(pie(pathologiesTop))
+            .join("path")
+            .attr("fill", (d, i) => color(i))
+            .attr("d", arc)
+            .attr("stroke", "white")
+            .attr("stroke-width", 2)
+            .style("cursor", "pointer")
+            .on("mouseover", function (event, d) {
+                d3.select(this).transition().duration(200).attr("opacity", 0.8);
+
+                const taux = (d.data.taux_termine_pathologie * 100).toFixed(1);
+
+                tooltip.transition().duration(200).style("opacity", 1);
+                tooltip
+                    .html(
+                        `<strong>${d.data.pathologie}</strong><br/>Patients: ${d.data.population_patho_cartographie.toLocaleString()}<br/>Taux vaccination: ${taux}%`,
+                    )
+                    .style("left", event.pageX + 15 + "px")
+                    .style("top", event.pageY - 15 + "px");
+            })
+            .on("mousemove", function (event) {
+                tooltip
+                    .style("left", event.pageX + 15 + "px")
+                    .style("top", event.pageY - 15 + "px");
+            })
+            .on("mouseout", function () {
+                d3.select(this).transition().duration(200).attr("opacity", 1);
+                tooltip.transition().duration(200).style("opacity", 0);
+            });
+
+        const legend = svg.append("g").attr("transform", `translate(580, 80)`);
+
+        legend
+            .append("text")
+            .attr("x", 0)
+            .attr("y", -10)
+            .attr("font-size", "14px")
+            .attr("font-weight", "bold")
+            .text("Pathologies:");
+
+        const legendItems = legend
+            .selectAll("g")
+            .data(pathologiesTop)
+            .join("g")
+            .attr("transform", (d, i) => `translate(0, ${i * 55})`);
+
+        legendItems
+            .append("rect")
+            .attr("width", 18)
+            .attr("height", 18)
+            .attr("fill", (d, i) => color(i));
+
+        legendItems.each(function (d) {
+            const g = d3.select(this);
+            const words = d.pathologie.split(" ");
+            let line = "";
+            let lineNumber = 0;
+            const lineHeight = 12;
+
+            words.forEach((word) => {
+                const testLine = line + word + " ";
+                if (testLine.length > 50 && line !== "") {
+                    g.append("text")
+                        .attr("x", 24)
+                        .attr("y", 9 + lineNumber * lineHeight)
+                        .attr("dy", "0.35em")
+                        .attr("font-size", "11px")
+                        .text(line);
+                    line = word + " ";
+                    lineNumber++;
+                } else {
+                    line = testLine;
+                }
+            });
+
+            g.append("text")
+                .attr("x", 24)
+                .attr("y", 9 + lineNumber * lineHeight)
+                .attr("dy", "0.35em")
+                .attr("font-size", "11px")
+                .text(line);
+        });
+
+        container.appendChild(svg.node());
+    }
+</script>
