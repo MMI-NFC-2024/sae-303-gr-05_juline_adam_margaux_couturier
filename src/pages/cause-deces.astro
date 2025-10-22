@@ -1,0 +1,223 @@
+---
+import Layout from "../layouts/Layout.astro";
+import mortaliteData from "../assets/Taux_mortalite_maladie_2018_2022.json";
+---
+
+<Layout title="Causes de décès : priorités de santé publique">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <h1 class="text-4xl lg:text-5xl font-extrabold text-purple-900 mb-6">
+            Taux de mortalité par type de maladie en France Métropolitaine
+        </h1>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-4">
+            Cette carte de chaleur visualise la mortalité en France de 2018 à
+            2022 selon 18 types de maladies.
+        </p>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-8">
+            Les tumeurs et les maladies cardiovasculaires dominent largement,
+            confirmant leur statut de premières causes de décès en France.
+        </p>
+    </div>
+
+    <div class="flex justify-center px-6 mb-12">
+        <div
+            id="plot-container"
+            class="bg-white rounded-2xl border border-slate-200 p-6 inline-block"
+        >
+        </div>
+    </div>
+
+    <div class="text-center mx-auto px-6 mb-12">
+        <a
+            href="https://opendata-cepidc.inserm.fr/"
+            class="text-sm text-blue-600 hover:text-blue-800 underline"
+            target="_blank"
+        >
+            Source : Interrogation des données sur les causes médicales de décès
+        </a>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Domination des tumeurs et maladies cardiovasculaires
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Les tumeurs et les maladies cardiovasculaires dominent
+                        largement en rouge foncé, confirmant leur statut de
+                        premières causes de décès en France avec respectivement
+                        environ 165 000 et 140 000 décès par an.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Impact de la COVID-19
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        L'apparition de la COVID-19 en 2020 est clairement
+                        visible en orange, marquant une rupture historique avec
+                        un pic en 2020-2021 où elle devient la troisième cause
+                        de mortalité avec environ 28 000 décès annuels moyens.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Hiérarchie des causes
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Le graphique révèle aussi une hiérarchie claire : les
+                        maladies respiratoires et les causes externes présentent
+                        des niveaux moyens (orange), tandis que les
+                        complications de grossesse et maladies périnatales
+                        restent marginales (jaune clair).
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Comparaison instantanée
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Cette visualisation permet de comparer instantanément
+                        l'impact relatif de toutes les causes de décès et leur
+                        évolution temporelle sur la période 2018-2022.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-8">
+                <h3 class="text-2xl font-semibold text-purple-900 mb-6">
+                    Principales causes de décès
+                </h3>
+
+                <div class="space-y-4">
+                    <div
+                        class="flex justify-between items-center border-b border-purple-300 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium">Tumeurs</span>
+                        <span class="text-red-700 font-bold text-lg"
+                            >~165 000/an</span
+                        >
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-purple-300 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium"
+                            >Maladies cardiovasculaires</span
+                        >
+                        <span class="text-red-600 font-bold text-lg"
+                            >~140 000/an</span
+                        >
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-slate-200 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium"
+                            >COVID-19 (2020-2021)</span
+                        >
+                        <span class="text-orange-600 font-bold">~28 000/an</span
+                        >
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-slate-200 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium"
+                            >Maladies respiratoires</span
+                        >
+                        <span class="text-orange-500 font-bold">~40 000/an</span
+                        >
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-slate-200 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium"
+                            >Causes externes</span
+                        >
+                        <span class="text-orange-500 font-bold">~35 000/an</span
+                        >
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-slate-200 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium"
+                            >Maladies digestives</span
+                        >
+                        <span class="text-yellow-600 font-bold">~25 000/an</span
+                        >
+                    </div>
+                    <div class="flex justify-between items-center pb-3">
+                        <span class="text-slate-700 font-medium"
+                            >Autres causes</span
+                        >
+                        <span class="text-slate-600 font-bold">Variable</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-6 border-t-2 border-purple-300">
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-900 font-bold"
+                            >Total annuel moyen</span
+                        >
+                        <span class="text-purple-900 font-bold text-2xl"
+                            >~600 000</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    import * as Plot from "@observablehq/plot";
+    import mortaliteData from "../assets/Taux_mortalite_maladie_2018_2022.json";
+
+    const container = document.getElementById("plot-container");
+
+    const optionPlot = {
+        title: "Taux de mortalité par type de maladie en France Métropolitaine",
+        subtitle: "(de 2018 à 2022)",
+        width: 900,
+        height: 600,
+        marginLeft: 60,
+        marginRight: 450,
+        x: {
+            label: "Année",
+        },
+        y: {
+            label: null,
+            tickSize: 0,
+            axis: "right",
+        },
+        color: {
+            type: "threshold",
+            domain: [10000, 25000, 50000, 100000, 200000],
+            scheme: "YlOrRd",
+            legend: true,
+            label: "Nombre de décès",
+        },
+        marks: [
+            Plot.cell(mortaliteData, {
+                x: "annee_de_deces",
+                y: "cause_initiale_de_deces",
+                fill: "valeur",
+                channels: {
+                    Année: "annee_de_deces",
+                    Cause: "cause_initiale_de_deces",
+                    Décès: (d) => d.valeur.toLocaleString(),
+                },
+                tip: true,
+            }),
+        ],
+    };
+
+    if (container) {
+        const plot = Plot.plot(optionPlot);
+        container.appendChild(plot);
+    }
+</script>

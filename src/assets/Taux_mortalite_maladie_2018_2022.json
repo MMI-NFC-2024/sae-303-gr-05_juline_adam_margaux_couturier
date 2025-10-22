@@ -1,0 +1,722 @@
+[
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"1. Maladies infectieuses et parasitaires",
+    "indicateur":"Effectifs de deces",
+    "valeur":11037
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"1. Maladies infectieuses et parasitaires",
+    "indicateur":"Effectifs de deces",
+    "valeur":11530
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"1. Maladies infectieuses et parasitaires",
+    "indicateur":"Effectifs de deces",
+    "valeur":10676
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"1. Maladies infectieuses et parasitaires",
+    "indicateur":"Effectifs de deces",
+    "valeur":10680
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"1. Maladies infectieuses et parasitaires",
+    "indicateur":"Effectifs de deces",
+    "valeur":12031
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"3. Maladies du sang et des organes hematopoietiques et certains troubles du systeme immunitaire",
+    "indicateur":"Effectifs de deces",
+    "valeur":2803
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"3. Maladies du sang et des organes hematopoietiques et certains troubles du systeme immunitaire",
+    "indicateur":"Effectifs de deces",
+    "valeur":2721
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"3. Maladies du sang et des organes hematopoietiques et certains troubles du systeme immunitaire",
+    "indicateur":"Effectifs de deces",
+    "valeur":2744
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"3. Maladies du sang et des organes hematopoietiques et certains troubles du systeme immunitaire",
+    "indicateur":"Effectifs de deces",
+    "valeur":2478
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"3. Maladies du sang et des organes hematopoietiques et certains troubles du systeme immunitaire",
+    "indicateur":"Effectifs de deces",
+    "valeur":2831
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"4. Maladies endocriniennes nutritionnelles et metaboliques",
+    "indicateur":"Effectifs de deces",
+    "valeur":21126
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"4. Maladies endocriniennes nutritionnelles et metaboliques",
+    "indicateur":"Effectifs de deces",
+    "valeur":21484
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"4. Maladies endocriniennes nutritionnelles et metaboliques",
+    "indicateur":"Effectifs de deces",
+    "valeur":22624
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"4. Maladies endocriniennes nutritionnelles et metaboliques",
+    "indicateur":"Effectifs de deces",
+    "valeur":22779
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"4. Maladies endocriniennes nutritionnelles et metaboliques",
+    "indicateur":"Effectifs de deces",
+    "valeur":24522
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"5. Troubles mentaux et du comportement",
+    "indicateur":"Effectifs de deces",
+    "valeur":27598
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"5. Troubles mentaux et du comportement",
+    "indicateur":"Effectifs de deces",
+    "valeur":27348
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"5. Troubles mentaux et du comportement",
+    "indicateur":"Effectifs de deces",
+    "valeur":24933
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"5. Troubles mentaux et du comportement",
+    "indicateur":"Effectifs de deces",
+    "valeur":23793
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"5. Troubles mentaux et du comportement",
+    "indicateur":"Effectifs de deces",
+    "valeur":25162
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"6. Maladies du systeme nerveux et des organes des sens",
+    "indicateur":"Effectifs de deces",
+    "valeur":38900
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"6. Maladies du systeme nerveux et des organes des sens",
+    "indicateur":"Effectifs de deces",
+    "valeur":37950
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"6. Maladies du systeme nerveux et des organes des sens",
+    "indicateur":"Effectifs de deces",
+    "valeur":36812
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"6. Maladies du systeme nerveux et des organes des sens",
+    "indicateur":"Effectifs de deces",
+    "valeur":35189
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"6. Maladies du systeme nerveux et des organes des sens",
+    "indicateur":"Effectifs de deces",
+    "valeur":37105
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"7. Maladies de lappareil circulatoire",
+    "indicateur":"Effectifs de deces",
+    "valeur":140749
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"7. Maladies de lappareil circulatoire",
+    "indicateur":"Effectifs de deces",
+    "valeur":135428
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"7. Maladies de lappareil circulatoire",
+    "indicateur":"Effectifs de deces",
+    "valeur":131713
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"7. Maladies de lappareil circulatoire",
+    "indicateur":"Effectifs de deces",
+    "valeur":134503
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"7. Maladies de lappareil circulatoire",
+    "indicateur":"Effectifs de deces",
+    "valeur":136930
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"8. Maladies de lappareil respiratoire",
+    "indicateur":"Effectifs de deces",
+    "valeur":44404
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"8. Maladies de lappareil respiratoire",
+    "indicateur":"Effectifs de deces",
+    "valeur":44701
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"8. Maladies de lappareil respiratoire",
+    "indicateur":"Effectifs de deces",
+    "valeur":37949
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"8. Maladies de lappareil respiratoire",
+    "indicateur":"Effectifs de deces",
+    "valeur":35569
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"8. Maladies de lappareil respiratoire",
+    "indicateur":"Effectifs de deces",
+    "valeur":44204
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"9. Maladies de lappareil digestif",
+    "indicateur":"Effectifs de deces",
+    "valeur":23862
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"9. Maladies de lappareil digestif",
+    "indicateur":"Effectifs de deces",
+    "valeur":24294
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"9. Maladies de lappareil digestif",
+    "indicateur":"Effectifs de deces",
+    "valeur":24364
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"9. Maladies de lappareil digestif",
+    "indicateur":"Effectifs de deces",
+    "valeur":25079
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"9. Maladies de lappareil digestif",
+    "indicateur":"Effectifs de deces",
+    "valeur":26555
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"2. Tumeurs",
+    "indicateur":"Effectifs de deces",
+    "valeur":167151
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"2. Tumeurs",
+    "indicateur":"Effectifs de deces",
+    "valeur":167768
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"2. Tumeurs",
+    "indicateur":"Effectifs de deces",
+    "valeur":167349
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"2. Tumeurs",
+    "indicateur":"Effectifs de deces",
+    "valeur":166520
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"2. Tumeurs",
+    "indicateur":"Effectifs de deces",
+    "valeur":168251
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"10. Maladies de la peau et du tissu cellulaire sous-cutane",
+    "indicateur":"Effectifs de deces",
+    "valeur":1472
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"10. Maladies de la peau et du tissu cellulaire sous-cutane",
+    "indicateur":"Effectifs de deces",
+    "valeur":1612
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"10. Maladies de la peau et du tissu cellulaire sous-cutane",
+    "indicateur":"Effectifs de deces",
+    "valeur":1587
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"10. Maladies de la peau et du tissu cellulaire sous-cutane",
+    "indicateur":"Effectifs de deces",
+    "valeur":1563
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"10. Maladies de la peau et du tissu cellulaire sous-cutane",
+    "indicateur":"Effectifs de deces",
+    "valeur":1828
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"11. Maladies du systeme osteo-articulaire et des muscles et du tissu conjonctif",
+    "indicateur":"Effectifs de deces",
+    "valeur":3708
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"11. Maladies du systeme osteo-articulaire et des muscles et du tissu conjonctif",
+    "indicateur":"Effectifs de deces",
+    "valeur":3892
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"11. Maladies du systeme osteo-articulaire et des muscles et du tissu conjonctif",
+    "indicateur":"Effectifs de deces",
+    "valeur":3906
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"11. Maladies du systeme osteo-articulaire et des muscles et du tissu conjonctif",
+    "indicateur":"Effectifs de deces",
+    "valeur":4314
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"11. Maladies du systeme osteo-articulaire et des muscles et du tissu conjonctif",
+    "indicateur":"Effectifs de deces",
+    "valeur":4597
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"12. Maladies de lappareil genito-urinaire",
+    "indicateur":"Effectifs de deces",
+    "valeur":10426
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"12. Maladies de lappareil genito-urinaire",
+    "indicateur":"Effectifs de deces",
+    "valeur":11178
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"12. Maladies de lappareil genito-urinaire",
+    "indicateur":"Effectifs de deces",
+    "valeur":11813
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"12. Maladies de lappareil genito-urinaire",
+    "indicateur":"Effectifs de deces",
+    "valeur":12386
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"12. Maladies de lappareil genito-urinaire",
+    "indicateur":"Effectifs de deces",
+    "valeur":13158
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"13. Complications de grossesse et accouchement et puerperalite",
+    "indicateur":"Effectifs de deces",
+    "valeur":33
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"13. Complications de grossesse et accouchement et puerperalite",
+    "indicateur":"Effectifs de deces",
+    "valeur":25
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"13. Complications de grossesse et accouchement et puerperalite",
+    "indicateur":"Effectifs de deces",
+    "valeur":36
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"13. Complications de grossesse et accouchement et puerperalite",
+    "indicateur":"Effectifs de deces",
+    "valeur":36
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"13. Complications de grossesse et accouchement et puerperalite",
+    "indicateur":"Effectifs de deces",
+    "valeur":48
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"14. Certaines affections dont lorigine se situe dans la periode perinatale",
+    "indicateur":"Effectifs de deces",
+    "valeur":1480
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"14. Certaines affections dont lorigine se situe dans la periode perinatale",
+    "indicateur":"Effectifs de deces",
+    "valeur":1404
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"14. Certaines affections dont lorigine se situe dans la periode perinatale",
+    "indicateur":"Effectifs de deces",
+    "valeur":1300
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"14. Certaines affections dont lorigine se situe dans la periode perinatale",
+    "indicateur":"Effectifs de deces",
+    "valeur":1361
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"14. Certaines affections dont lorigine se situe dans la periode perinatale",
+    "indicateur":"Effectifs de deces",
+    "valeur":1306
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"15. Malformations congenitales et anomalies chromosomiques",
+    "indicateur":"Effectifs de deces",
+    "valeur":1414
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"15. Malformations congenitales et anomalies chromosomiques",
+    "indicateur":"Effectifs de deces",
+    "valeur":1502
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"15. Malformations congenitales et anomalies chromosomiques",
+    "indicateur":"Effectifs de deces",
+    "valeur":1417
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"15. Malformations congenitales et anomalies chromosomiques",
+    "indicateur":"Effectifs de deces",
+    "valeur":1397
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"15. Malformations congenitales et anomalies chromosomiques",
+    "indicateur":"Effectifs de deces",
+    "valeur":1566
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"16. Symptomes et etats morbides mal definis",
+    "indicateur":"Effectifs de deces",
+    "valeur":59809
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"16. Symptomes et etats morbides mal definis",
+    "indicateur":"Effectifs de deces",
+    "valeur":65703
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"16. Symptomes et etats morbides mal definis",
+    "indicateur":"Effectifs de deces",
+    "valeur":65970
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"16. Symptomes et etats morbides mal definis",
+    "indicateur":"Effectifs de deces",
+    "valeur":66873
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"16. Symptomes et etats morbides mal definis",
+    "indicateur":"Effectifs de deces",
+    "valeur":72744
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"17. Causes externes de morbidite et mortalite",
+    "indicateur":"Effectifs de deces",
+    "valeur":38563
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"17. Causes externes de morbidite et mortalite",
+    "indicateur":"Effectifs de deces",
+    "valeur":38963
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"17. Causes externes de morbidite et mortalite",
+    "indicateur":"Effectifs de deces",
+    "valeur":39008
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"17. Causes externes de morbidite et mortalite",
+    "indicateur":"Effectifs de deces",
+    "valeur":39839
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"17. Causes externes de morbidite et mortalite",
+    "indicateur":"Effectifs de deces",
+    "valeur":43721
+  },
+  {
+    "annee_de_deces":2018,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"18. Covid-19",
+    "indicateur":"Effectifs de deces",
+    "valeur":0
+  },
+  {
+    "annee_de_deces":2019,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"18. Covid-19",
+    "indicateur":"Effectifs de deces",
+    "valeur":0
+  },
+  {
+    "annee_de_deces":2020,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"18. Covid-19",
+    "indicateur":"Effectifs de deces",
+    "valeur":68846
+  },
+  {
+    "annee_de_deces":2021,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"18. Covid-19",
+    "indicateur":"Effectifs de deces",
+    "valeur":58287
+  },
+  {
+    "annee_de_deces":2022,
+    "lieu_de_domicile":"France metropolitaine",
+    "sexe":"Tous sexes",
+    "cause_initiale_de_deces":"18. Covid-19",
+    "indicateur":"Effectifs de deces",
+    "valeur":39815
+  }
+]
