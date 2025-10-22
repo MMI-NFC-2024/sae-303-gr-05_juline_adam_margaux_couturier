@@ -24,7 +24,7 @@ const tauxMin = Math.min(...tauxValues);
 ---
 
 <Layout title="Vaccination : une couverture homogène">
-    <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="max-w-7xl mx-auto px-18 py-12">
         <h1 class="text-4xl lg:text-5xl font-extrabold text-purple-900 mb-6">
             Taux de vaccination par département en France
         </h1>
@@ -41,7 +41,7 @@ const tauxMin = Math.min(...tauxValues);
         </p>
     </div>
 
-    <div class="flex justify-center px-6 mb-12">
+    <div class="flex justify-center px-18 mb-12">
         <div
             id="plot-container"
             class="bg-white rounded-2xl border border-slate-200 p-6 inline-block"
@@ -49,7 +49,7 @@ const tauxMin = Math.min(...tauxValues);
         </div>
     </div>
 
-    <div class="text-center mx-auto px-6 mb-12">
+    <div class="text-center mx-auto px-18 mb-12">
         <a
             href="https://www.data.gouv.fr/datasets/donnees-vaccination-par-pathologie-et-departement-region/"
             class="text-sm text-blue-600 hover:text-blue-800 underline"
@@ -59,7 +59,7 @@ const tauxMin = Math.min(...tauxValues);
         </a>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="max-w-7xl mx-auto px-18 py-12">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div class="space-y-6">
                 <div>
@@ -144,6 +144,14 @@ const tauxMin = Math.min(...tauxValues);
                 </div>
             </div>
         </div>
+        <div class="mt-10">
+            <a
+                href="/conclusion"
+                class="text-purple-700 font-medium hover:text-purple-900"
+            >
+                Lire la conclusion de notre analyse →
+            </a>
+        </div>
     </div>
 </Layout>
 
@@ -154,14 +162,12 @@ const tauxMin = Math.min(...tauxValues);
 
     const container = document.getElementById("plot-container");
 
-    // Filtrer les données pour "Toutes pathologies" par département
     const dataDept = vaccinationData.filter(
         (d) =>
             d.pathologie === "Toutes pathologies de la categorie" &&
             d.departement_residence !== "Tout departement",
     );
 
-    // Créer une map des taux par département
     const tauxByDept = new Map(
         dataDept.map((d) => [
             d.departement_residence,
