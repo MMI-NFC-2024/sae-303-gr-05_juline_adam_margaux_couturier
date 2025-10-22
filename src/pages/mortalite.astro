@@ -1,0 +1,184 @@
+---
+import Layout from "../layouts/Layout.astro";
+import mortaliteData from "../assets/Taux_mortalite_maladie_2018_2022.json";
+
+const causesMap = new Map();
+mortaliteData.forEach((d) => {
+    if (!causesMap.has(d.cause_initiale_de_deces)) {
+        causesMap.set(d.cause_initiale_de_deces, []);
+    }
+    causesMap.get(d.cause_initiale_de_deces).push(d.valeur);
+});
+
+const top10Data = Array.from(causesMap, ([cause, valeurs]) => ({
+    cause: cause.replace(/^\d+\.\s*/, ""), 
+    moyenne: Math.round(
+        valeurs.reduce((a: number, b: number) => a + b, 0) / valeurs.length,
+    ),
+}))
+    .sort((a, b) => b.moyenne - a.moyenne)
+    .slice(0, 10); 
+---
+
+<Layout title="Mortalité : domination cancer-cardiovasculaire">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <h1 class="text-4xl lg:text-5xl font-extrabold text-purple-900 mb-6">
+            Top 10 des causes de décès en France Métropolitaine
+        </h1>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-4">
+            Ce graphique en barres horizontales présente le top 10 des causes de
+            décès en France Métropolitaine sur la période 2018-2022, classé par
+            nombre moyen de décès annuels.
+        </p>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-8">
+            Les tumeurs sont de loin la première cause avec environ 167 000
+            décès par an, suivies des maladies cardiovasculaires.
+        </p>
+    </div>
+
+    <div class="flex justify-center px-6 mb-12">
+        <div
+            id="plot-container"
+            class="bg-white rounded-2xl border border-slate-200 p-6 inline-block"
+        >
+        </div>
+    </div>
+
+    <div class="text-center mx-auto px-6 mb-12">
+        <a
+            href="https://www.santepubliquefrance.fr/"
+            class="text-sm text-blue-600 hover:text-blue-800 underline"
+            target="_blank"
+        >
+            Source : Santé Publique France - Données de mortalité
+        </a>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Domination des maladies chroniques
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Les tumeurs sont de loin la première cause avec environ
+                        167 000 décès par an, suivies des maladies
+                        cardiovasculaires avec près de 136 000 décès. Ces deux
+                        maladies chroniques représentent les principales causes
+                        de mortalité en France.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Symptômes mal définis
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Les symptômes mal définis (environ 66 000 décès)
+                        arrivent en troisième position, reflétant une part
+                        importante de décès dont la cause précise reste
+                        indéterminée.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Autres causes majeures
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Les maladies respiratoires et les causes externes
+                        (accidents, suicides) se situent autour de 40 000 décès
+                        chacune. Les maladies du système nerveux, les troubles
+                        mentaux, et les maladies digestives complètent le top
+                        10.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Priorités de santé publique
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Ce graphique permet de visualiser rapidement la
+                        hiérarchie des priorités de santé publique et
+                        l'importance relative de chaque pathologie dans la
+                        mortalité globale française.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-8">
+                <h3 class="text-2xl font-semibold text-purple-900 mb-6">
+                    Top 10 des causes
+                </h3>
+
+                <div class="space-y-3">
+                    {
+                        top10Data.map((item, index) => (
+                            <div class="flex justify-between items-start border-b border-slate-200 pb-2">
+                                <span class="text-slate-700 font-medium text-sm flex-1 pr-4">
+                                    {index + 1}. {item.cause}
+                                </span>
+                                <span
+                                    class={`font-bold text-right whitespace-nowrap ${
+                                        index === 0
+                                            ? "text-red-700 text-lg"
+                                            : index === 1
+                                              ? "text-red-600"
+                                              : "text-purple-800"
+                                    }`}
+                                >
+                                    {item.moyenne.toLocaleString("fr-FR")}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <div class="mt-6 pt-6 border-t-2 border-purple-300">
+                    <p class="text-sm text-slate-600 italic text-center">
+                        Nombre moyen de décès annuels (2018-2022)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script type="module" define:vars={{ top10Data }}>
+    import * as Plot from "https://cdn.skypack.dev/@observablehq/plot";
+
+    const container = document.getElementById("plot-container");
+
+    const optionPlot = {
+        title: "Top 10 des causes de décès en France Métropolitaine",
+        subtitle: "(moyenne de 2018 à 2022)",
+        marginLeft: 275,
+        width: 800,
+        height: 450, 
+        x: {
+            label: "Nombre moyen de décès",
+            grid: true,
+        },
+        y: {
+            label: null,
+        },
+        marks: [
+            Plot.barX(top10Data, {
+                x: "moyenne",
+                y: "cause",
+                fill: "steelblue",
+                tip: true,
+            }),
+            Plot.ruleX([0]),
+        ],
+    };
+
+    if (container) {
+        const plot = Plot.plot(optionPlot);
+        container.appendChild(plot);
+    }
+</script>
