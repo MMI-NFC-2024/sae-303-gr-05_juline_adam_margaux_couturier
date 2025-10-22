@@ -1,0 +1,217 @@
+---
+import Layout from "../layouts/Layout.astro";
+import medecinsData from "../assets/medecins_par_departement.json";
+import departements from "../assets/departements.geojson.json";
+---
+
+<Layout title="Répartition territoriale : fracture métropoles-rural">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <h1 class="text-4xl lg:text-5xl font-extrabold text-purple-900 mb-6">
+            Nombre cumulé de médecins accrédités par département en France
+            Métropolitaine
+        </h1>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-4">
+            Cette carte illustre la répartition géographique des médecins
+            accrédités en France Métropolitaine de 2018 à 2025.
+        </p>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-8">
+            Cette carte révèle une forte concentration des médecins accrédités
+            dans les grandes métropoles françaises.
+        </p>
+    </div>
+
+    <div class="flex justify-center px-6 mb-12">
+        <div
+            id="plot-container"
+            class="bg-white rounded-2xl border border-slate-200 p-6 inline-block"
+        >
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Forte concentration métropolitaine
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Les zones rouge foncé (Paris, Lyon, Marseille, Bordeaux)
+                        regroupent la majorité des médecins accrédités - Paris
+                        compte à lui seul 906 médecins, soit près de 9% du total
+                        national.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Déserts médicaux
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        À l'inverse, les territoires ruraux restent désertés :
+                        la plupart des départements du centre et de l'est de la
+                        France comptent moins de 50 médecins accrédités.
+                        Certains départements comme la Lozère, la Creuse ou la
+                        Haute-Marne en ont moins de 10.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Une inégalité structurelle
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Cette inégalité géographique reflète la concentration
+                        hospitalière et démontre que le système d'accréditation,
+                        bien qu'en croissance, reproduit les déséquilibres
+                        territoriaux existants en matière de densité médicale.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-8">
+                <h3 class="text-2xl font-semibold text-purple-900 mb-6">
+                    Départements
+                </h3>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-slate-700 mb-4">
+                        Top 5
+                    </h4>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700">Paris (75)</span>
+                            <span class="text-purple-800 font-bold">906</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700"
+                                >Bouches-du-Rhône (13)</span
+                            >
+                            <span class="text-purple-800 font-bold">675</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700">Rhône (69)</span>
+                            <span class="text-purple-800 font-bold">603</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700">Gironde (33)</span>
+                            <span class="text-purple-800 font-bold">423</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700"
+                                >Hauts-de-Seine (92)</span
+                            >
+                            <span class="text-purple-800 font-bold">346</span>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-semibold text-slate-700 mb-4 mt-5">
+                        Bas du classement
+                    </h4>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700">Lozère (48)</span>
+                            <span class="text-purple-800 font-bold">3</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700">Indre (36)</span>
+                            <span class="text-purple-800 font-bold">2</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700">Haute-Marne (52)</span>
+                            <span class="text-purple-800 font-bold">1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3 class="text-2xl font-semibold text-purple-900 mb-4 mt-20">
+                Témoignage d'une résidente de Haute Marne
+            </h3>
+            <div class="bg-white border border-slate-200 rounded-2xl p-8">
+                <div>
+                    <h4 class="text-lg font-semibold text-slate-700 mb-4">
+                        Solène Geiss, 20 ans, étudiante en BUT MMI
+                    </h4>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700"
+                                >« Les temps sont difficiles avec les médcins, 6
+                                mois pour un rendez-vous...tous les ans le
+                                cabinet change de docteur, on ne sait jamais si
+                                le prochain restera ! Pour avoir un rendez-vous
+                                avant il faut faire 1/2h de route et pour les
+                                spécialistes c'est encore pire ! Le plus proche
+                                reste Dijon ou Nancy. »</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import * as Plot from "@observablehq/plot";
+        import medecinsData from "../assets/medecins_par_departement.json";
+        import departements from "../assets/departements.geojson.json";
+
+        const container = document.getElementById("plot-container");
+
+        const medecinsMap = new Map(
+            medecinsData.map((d) => [d.Département, d.nombre_medecins]),
+        );
+
+        const optionPlot = {
+            title: "Nombre cumulé de médecins accrédités par département (2018-2025)",
+            projection: {
+                type: "mercator",
+                domain: departements,
+            },
+            color: {
+                type: "threshold",
+                domain: [0, 50, 100, 200, 300, 500],
+                scheme: "YlOrRd",
+                label: "Nombre de médecins accrédités",
+                legend: true,
+                tickFormat: (d) => (d === 0 ? "0" : d),
+            },
+            marks: [
+                Plot.geo(departements, {
+                    fill: (d) => {
+                        const code =
+                            d.properties.code ||
+                            d.properties.CODE_DEPT ||
+                            d.properties.insee;
+                        return medecinsMap.get(code) || 0;
+                    },
+                    stroke: "white",
+                    strokeWidth: 0.5,
+                    tip: {
+                        format: {
+                            fill: false,
+                            stroke: false,
+                        },
+                    },
+                    title: (d) => {
+                        const code =
+                            d.properties.code ||
+                            d.properties.CODE_DEPT ||
+                            d.properties.insee;
+                        const nom =
+                            d.properties.nom || d.properties.NOM_DEPT || code;
+                        const medecins = medecinsMap.get(code) || 0;
+                        return `${nom} (${code}): ${medecins} médecins`;
+                    },
+                }),
+            ],
+        };
+
+        if (container) {
+            const plot = Plot.plot(optionPlot);
+            container.appendChild(plot);
+        }
+    </script>
+</Layout>
