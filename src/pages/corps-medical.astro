@@ -1,0 +1,205 @@
+---
+import Layout from "../layouts/Layout.astro";
+import evolutionData from "../assets/medecins_evolution_annuelle.json";
+---
+
+<Layout title="Corps médical : progression inégale">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <h1 class="text-4xl lg:text-5xl font-extrabold text-purple-900 mb-6">
+            Évolution du nombre de médecins accrédités en France Métropolitaine
+        </h1>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-4">
+            Ce graphique montre la forte croissance du système d'accréditation
+            des médecins en France entre 2018 et 2025.
+        </p>
+
+        <p class="text-lg leading-relaxed text-slate-600 mb-8">
+            Le dispositif d'accréditation, lancé en 2006, révèle un démarrage
+            lent puis une explosion à partir de 2021.
+        </p>
+    </div>
+
+    <div class="flex justify-center px-6 mb-12">
+        <div
+            id="plot-container"
+            class="bg-white rounded-2xl border border-slate-200 p-6 inline-block"
+        >
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Un démarrage très lent
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Le dispositif d'accréditation, lancé en 2006, a connu un
+                        démarrage très lent avec moins de 100 accréditations par
+                        an entre 2018 et 2020, montrant une adoption progressive
+                        du programme par les médecins.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Explosion à partir de 2021
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Une explosion survient à partir de 2021 avec 1 216
+                        nouvelles accréditations. Cette croissance s'est
+                        poursuivie avec un pic en 2024 à 2 734 médecins
+                        accrédités, démontrant le succès croissant de ce
+                        programme volontaire de qualité et sécurité des soins.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Légère baisse en 2025
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        En 2025, on observe une légère baisse à 2 181
+                        accréditations. Au total, plus de 10 500 médecins sont
+                        aujourd'hui accrédités, principalement dans les
+                        spécialités à risque (chirurgie, anesthésie,
+                        obstétrique).
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-900 mb-4">
+                        Vue d'ensemble
+                    </h3>
+                    <p class="text-base leading-relaxed text-slate-700">
+                        Ce graphique démontre globalement le succès croissant du
+                        système d'accréditation auprès des médecins français.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-8">
+                <h3 class="text-2xl font-semibold text-purple-900 mb-6">
+                    Chiffres clés par année
+                </h3>
+
+                <div class="space-y-4">
+                    <div
+                        class="flex justify-between items-center border-b border-slate-200 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium">2018</span>
+                        <span class="text-purple-800 font-bold">67</span>
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-slate-200 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium">2019</span>
+                        <span class="text-purple-800 font-bold">81</span>
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-slate-200 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium">2020</span>
+                        <span class="text-purple-800 font-bold">99</span>
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-slate-200 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium">2021</span>
+                        <span class="text-purple-800 font-bold text-lg"
+                            >1 216</span
+                        >
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-slate-200 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium">2022</span>
+                        <span class="text-purple-800 font-bold text-lg"
+                            >2 341</span
+                        >
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-slate-200 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium">2023</span>
+                        <span class="text-purple-800 font-bold text-lg"
+                            >2 530</span
+                        >
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-purple-300 pb-3"
+                    >
+                        <span class="text-slate-700 font-medium"
+                            >2024 (pic)</span
+                        >
+                        <span class="text-purple-900 font-bold text-xl"
+                            >2 734</span
+                        >
+                    </div>
+                    <div class="flex justify-between items-center pb-3">
+                        <span class="text-slate-700 font-medium">2025</span>
+                        <span class="text-purple-800 font-bold text-lg"
+                            >2 181</span
+                        >
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-6 border-t-2 border-purple-300">
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-900 font-bold"
+                            >Total cumulé</span
+                        >
+                        <span class="text-purple-900 font-bold text-2xl"
+                            >10 500+</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    import * as Plot from "@observablehq/plot";
+    import evolutionData from "../assets/medecins_evolution_annuelle.json";
+
+    const container = document.getElementById("plot-container");
+
+    const optionPlot = {
+        width: 800,
+        height: 400,
+        marginLeft: 60,
+        marginBottom: 40,
+        title: "Évolution du nombre de médecins accrédités en France Métropolitaine",
+        subtitle: "(de 2018 à 2025)",
+        x: {
+            label: "Année",
+            tickFormat: (d) => d.toString(),
+        },
+        y: {
+            label: "Nombre de nouvelles accréditations",
+            grid: true,
+            domain: [0, 3000],
+        },
+        marks: [
+            Plot.barY(evolutionData, {
+                x: "annee",
+                y: "nombre_accreditations",
+                fill: "#6D0E80",
+                channels: {
+                    Année: "annee",
+                    Accréditations: "nombre_accreditations",
+                },
+                tip: true,
+            }),
+            Plot.ruleY([0]),
+        ],
+    };
+
+    if (container) {
+        const plot = Plot.plot(optionPlot);
+        container.appendChild(plot);
+    }
+</script>
